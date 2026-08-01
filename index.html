@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Friendship Day!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+            text-align: center; 
+            margin: 0; 
+            padding: 20px; 
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Much bigger and elegant container */
+        .container { 
+            width: 100%;
+            max-width: 800px; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 50px 30px; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .hidden { 
+            display: none !important; 
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff4d4d;
+            margin-bottom: 15px;
+            animation: popIn 1s ease-out;
+        }
+
+        p.subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Step-by-step letter styles */
+        .letter-slide {
+            display: none;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #444;
+            animation: fadeIn 1s ease-in-out;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .letter-slide.active {
+            display: flex;
+        }
+
+        /* Slideshow styles */
+        .photo-slide {
+            display: none;
+            animation: fadeInZoom 1s ease-in-out;
+        }
+
+        .photo-slide.active {
+            display: block;
+        }
+
+        .photo-slide img {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        /* Animated Buttons */
+        button { 
+            background: linear-gradient(135deg, #ff4d4d, #ff1a1a); 
+            color: white; 
+            border: none; 
+            padding: 15px 40px; 
+            font-size: 20px; 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border-radius: 35px; 
+            cursor: pointer; 
+            margin-top: 30px; 
+            box-shadow: 0 5px 20px rgba(255, 77, 77, 0.4);
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover { 
+            transform: scale(1.08);
+            background: linear-gradient(135deg, #ff1a1a, #cc0000); 
+        }
+
+        /* Animations */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInZoom {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Player -->
+    <audio id="bg-song" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PAGE 1: Welcome Screen -->
+    <div class="container" id="page1">
+        <h1>Happy Friendship Day! 💖</h1>
+        <p class="subtitle">I have a small surprise for you...</p>
+        <button onclick="startSurprise()">Open Surprise</button>
+    </div>
+
+    <!-- PAGE 2: The Letter (Step by Step) -->
+    <div class="container hidden" id="page2">
+        
+        <div id="slide1" class="letter-slide active">
+            <p>If someone had told me three years ago that a random person from a Telegram study group would become one of the most important people in my life...<br><br>I probably wouldn't have believed them.</p>
+        </div>
+
+        <div id="slide2" class="letter-slide hidden">
+            <p>It all started so randomly. A study group... a few conversations... then Snapchat...<br><br>And somehow, those small conversations slowly became a part of everyday life.</p>
+        </div>
+
+        <div id="slide3" class="letter-slide hidden">
+            <p>Today... it's been almost three years. It's funny how we're still a long-distance friendship.<br><br>We've never shared the same classroom, never met every day like most friends do... Yet somehow, our friendship survived every distance.</p>
+        </div>
+
+        <div id="slide4" class="letter-slide hidden">
+            <p>There are days when we don't even realize how much time we've spent talking. Sometimes one call becomes hours. Sometimes one random message makes the whole day better.<br><br>I honestly don't know how it happened... But somewhere along the way, you became one of those people I genuinely don't want to lose.</p>
+        </div>
+
+        <div id="slide5" class="letter-slide hidden">
+            <p>I know there's something I should also say... Sometimes I joke too much. Sometimes I say things without thinking. And sometimes... I end up hurting you without ever wanting to.<br><br>If I've ever made you feel bad, I'm really sorry. It was never my intention. You deserve smiles, not reasons to overthink because of me.</p>
+        </div>
+
+        <div id="slide6" class="letter-slide hidden">
+            <p>Thank you... For staying. For listening. For laughing at my stupid jokes. For tolerating my nonsense. For making ordinary days feel less ordinary.</p>
+        </div>
+
+        <div id="slide7" class="letter-slide hidden">
+            <p>I don't know what life has planned for us. Maybe things will change. Maybe they'll stay exactly the same. But one thing I hope never changes... is this friendship.<br><br>Because honestly... it's one of the best things that ever happened to me.</p>
+        </div>
+
+        <div id="slide8" class="letter-slide hidden">
+            <h1>Thank you...</h1>
+            <p>...for these beautiful three years.<br><br><strong>And thank you for being you. ❤️</strong></p>
+        </div>
+
+        <!-- Buttons for the letter -->
+        <button id="nextBtn" onclick="nextMessage()">Next ➔</button>
+        <button id="photoBtn" class="hidden" onclick="showPhotos()">See Our Memories 📸</button>
+
+    </div>
+
+    <!-- PAGE 3: Photo Slideshow -->
+    <div class="container hidden" id="pagePhotos">
+        <h1>Our Memories ✨</h1>
+        
+        <div id="photo1" class="photo-slide active">
+            <img src="1.jpg" alt="Memory 1">
+        </div>
+        <div id="photo2" class="photo-slide hidden">
+            <img src="2.jpg" alt="Memory 2">
+        </div>
+        <div id="photo3" class="photo-slide hidden">
+            <img src="3.jpg" alt="Memory 3">
+        </div>
+        <div id="photo4" class="photo-slide hidden">
+            <img src="4.jpg" alt="Memory 4">
+        </div>
+        <div id="photo5" class="photo-slide hidden">
+            <img src="5.jpg" alt="Memory 5">
+        </div>
+        <div id="photo6" class="photo-slide hidden">
+            <img src="6.jpg" alt="Memory 6">
+        </div>
+
+        <button id="nextPhotoBtn" onclick="nextPhoto()">Next Photo ➔</button>
+        <h2 id="endMessage" class="hidden" style="font-family: 'Dancing Script', cursive; color: #ff4d4d; margin-top: 20px;">Happy Friendship Day! ❤️</h2>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 8; // Total paragraphs in the letter
+
+        let currentPhoto = 1;
+        const totalPhotos = 6; // Total uploaded images
+
+        function startSurprise() {
+            // Play the music
+            document.getElementById('bg-song').play();
+            
+            // Move to the Letter Page
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+
+        function nextMessage() {
+            // Hide current text slide
+            document.getElementById('slide' + currentSlide).classList.remove('active');
+            document.getElementById('slide' + currentSlide).classList.add('hidden');
+            
+            currentSlide++;
+
+            // Show next text slide
+            if (currentSlide <= totalSlides) {
+                document.getElementById('slide' + currentSlide).classList.remove('hidden');
+                document.getElementById('slide' + currentSlide).classList.add('active');
+            }
+
+            // If it's the last slide, hide the "Next" button and show "See Memories"
+            if (currentSlide === totalSlides) {
+                document.getElementById('nextBtn').classList.add('hidden');
+                document.getElementById('photoBtn').classList.remove('hidden');
+            }
+        }
+
+        function showPhotos() {
+            // Move from Letter to Photos Page
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('pagePhotos').classList.remove('hidden');
+        }
+
+        function nextPhoto() {
+            // Hide current photo
+            document.getElementById('photo' + currentPhoto).classList.remove('active');
+            document.getElementById('photo' + currentPhoto).classList.add('hidden');
+            
+            currentPhoto++;
+
+            // Show next photo
+            if (currentPhoto <= totalPhotos) {
+                document.getElementById('photo' + currentPhoto).classList.remove('hidden');
+                document.getElementById('photo' + currentPhoto).classList.add('active');
+            }
+
+            // If we are on the last photo, hide the "Next Photo" button and show a final message
+            if (currentPhoto > totalPhotos) {
+                document.getElementById('nextPhotoBtn').classList.add('hidden');
+                document.getElementById('endMessage').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
