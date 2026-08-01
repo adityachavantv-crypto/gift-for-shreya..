@@ -1,0 +1,235 @@
+<!DOCTYPE html>    
+<html lang="en">    
+<head>    
+<meta charset="UTF-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<title>For You ❤️</title>    
+<style>    
+    *{    
+        margin:0;    
+        padding:0;    
+        box-sizing:border-box;    
+        font-family: 'Poppins', sans-serif;    
+    }    
+        
+    body{    
+        background:#0f172a;    
+        color:white;    
+        overflow-x:hidden;    
+    }    
+        
+    .container{    
+        min-height:100vh;    
+        display:flex;    
+        flex-direction:column;    
+        justify-content:center;    
+        align-items:center;    
+        text-align:center;    
+        padding:20px;    
+    }    
+        
+    h1{    
+        font-size:2.5rem;    
+        margin-bottom:20px;    
+    }    
+        
+    p{    
+        font-size:1.2rem;    
+        margin-bottom:20px;    
+    }
+    
+    /* Added to make the line breaks in your JS string show up on screen */
+    #text {
+        white-space: pre-line;
+        max-width: 600px;
+        margin: 0 auto 20px auto;
+    }
+        
+    button{    
+        padding:12px 25px;    
+        border:none;    
+        border-radius:30px;    
+        background:#fbbf24;    
+        color:black;    
+        cursor:pointer;
+        font-size: 1rem;
+        font-weight: bold;
+    }    
+        
+    .gift{    
+        font-size:100px;    
+        animation:bounce 1.5s infinite;    
+    }    
+        
+    @keyframes bounce{    
+        50%{ transform:translateY(-15px); }    
+    }    
+        
+    .hidden{    
+        display:none !important;    
+    }    
+        
+    .card{    
+        background:rgba(255,255,255,0.1);    
+        padding:20px;    
+        margin:10px;    
+        border-radius:15px;    
+        width:280px;    
+    }    
+        
+    img{    
+        border-radius:10px;    
+        margin:10px;    
+        width:140px;    
+    } 
+</style>    
+</head>    
+<body>    
+    
+<!-- PAGE 1 -->    
+<div class="container" id="page1">    
+    <div class="gift">🎁</div>    
+    <h1>A Small Surprise For You 😊</h1>    
+    <p>Click below...</p>    
+    <button onclick="openGift()">Open</button>    
+</div>    
+
+<!-- PAGE 2 -->    
+<div class="container hidden" id="page2">    
+    <div class="card">3 saal pehle ek random Telegram chat thi...</div>    
+    <div class="card">Aur aaj tu meri life ka important part hai ❤️</div>    
+    <div class="card">Kabhi expect nahi kiya tha itna bond banega...</div>    
+    <button onclick="showPhotos()">Continue</button>    
+</div>    
+
+<!-- PHOTOS PAGE -->    
+<div class="container hidden" id="pagePhotos">    
+    <h1>Our Memories 📸</h1>    
+    <img src="1.jpg" alt="Memory 1">    
+    <img src="2.jpg" alt="Memory 2">    
+    <img src="3.jpg" alt="Memory 3">    
+    <img src="4.jpg" alt="Memory 4">    
+    <br><br>    
+    <button onclick="showMessage()">Next</button>
+</div>    
+
+<!-- FINAL MESSAGE -->    
+<div class="container hidden" id="page3">    
+    <h1>💌</h1>    
+    <p id="text"></p>  
+    <img src="6.jpg" width="200" alt="Memory 6">  
+    <br><br>
+    <button onclick="finalPage()">Last</button>    
+</div>    
+
+<!-- LAST PAGE -->    
+<div class="container hidden" id="page4">    
+    <h1>🎉 Happy Best Friend Day 🎉</h1>    
+    <p>    
+        Thank you for being in my life ❤️<br>    
+        You really matter to me.    
+    </p>  
+    <img src="5.jpg" alt="Memory 5"> 
+</div>    
+
+<script>    
+    function openGift(){    
+        document.getElementById("page1").classList.add("hidden");    
+        document.getElementById("page2").classList.remove("hidden");    
+    }    
+        
+    function showPhotos(){    
+        document.getElementById("page2").classList.add("hidden");    
+        document.getElementById("pagePhotos").classList.remove("hidden");    
+    }    
+        
+    function showMessage(){    
+        document.getElementById("pagePhotos").classList.add("hidden");    
+        document.getElementById("page3").classList.remove("hidden");    
+        
+        // Everything inside these backticks will be typed out
+        let text = `If someone had told me three years ago that
+a random person from a Telegram study group
+would become one of the most important people in my life...
+
+I probably wouldn't have believed them.
+
+It all started so randomly.
+
+A study group...
+a few conversations...
+then Snapchat...
+
+And somehow,
+those small conversations slowly became a part of everyday life.
+
+Today...
+it's been almost three years.
+
+It's funny how we're still a long-distance friendship.
+
+We've never shared the same classroom,
+never met every day like most friends do...
+
+Yet somehow,
+our friendship survived every distance.
+
+There are days when we don't even realize how much time we've spent talking.
+Sometimes one call becomes hours.
+Sometimes one random message makes the whole day better.
+
+I honestly don't know how it happened...
+But somewhere along the way,
+you became one of those people I genuinely don't want to lose.
+
+I know there's something I should also say...
+
+Sometimes I joke too much.
+Sometimes I say things without thinking.
+And sometimes...
+I end up hurting you without ever wanting to.
+
+If I've ever made you feel bad, I'm really sorry.
+It was never my intention.
+You deserve smiles, not reasons to overthink because of me.
+
+Thank you...
+For staying.
+For listening.
+For laughing at my stupid jokes.
+For tolerating my nonsense.
+For making ordinary days feel less ordinary.
+
+I don't know what life has planned for us.
+Maybe things will change.
+Maybe they'll stay exactly the same.
+
+But one thing I hope never changes...
+is this friendship.
+
+Because honestly...
+it's one of the best things that ever happened to me.
+
+Thank you for these beautiful three years.
+And thank you...
+for being you. ❤️`;
+
+        let i = 0;    
+        // Sped up slightly (from 40 to 30) so the long letter types a bit faster
+        function type(){    
+            if(i < text.length){    
+                document.getElementById("text").innerHTML += text.charAt(i);    
+                i++;    
+                setTimeout(type, 30);    
+            }    
+        }    
+        type();    
+    }    
+        
+    function finalPage(){    
+        document.getElementById("page3").classList.add("hidden");    
+        document.getElementById("page4").classList.remove("hidden");    
+    }
+</script>
+</body>
+</html>
